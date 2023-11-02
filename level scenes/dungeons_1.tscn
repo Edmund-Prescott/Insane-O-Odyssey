@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3wrenrwl2wte"]
+[gd_scene load_steps=5 format=3 uid="uid://b3wrenrwl2wte"]
 
 [ext_resource type="PackedScene" uid="uid://uuksu5g2js0s" path="res://game/player.tscn" id="1_qah0c"]
 [ext_resource type="Script" path="res://level scenes/dungeons_1.gd" id="1_ry2cg"]
+[ext_resource type="PackedScene" uid="uid://bwthkoia5k4kh" path="res://game/push_block.tscn" id="3_r678e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_srff2"]
 size = Vector2(235, 19)
@@ -23,3 +24,6 @@ offset_left = -118.0
 offset_top = -9.0
 offset_right = 118.0
 offset_bottom = 11.0
+
+[node name="push_block" parent="." instance=ExtResource("3_r678e")]
+position = Vector2(210, 36)
