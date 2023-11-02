@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dm2yj3c7eueqx"]
+[gd_scene load_steps=3 format=3 uid="uid://dm2yj3c7eueqx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_md5ks"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rhdbs"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -11,3 +13,8 @@
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("CircleShape2D_md5ks")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Enemy" type="Node2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+shape = SubResource("CircleShape2D_rhdbs")
