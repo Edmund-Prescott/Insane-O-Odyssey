@@ -1,3 +1,25 @@
-[gd_scene format=3 uid="uid://b3wrenrwl2wte"]
+[gd_scene load_steps=4 format=3 uid="uid://b3wrenrwl2wte"]
+
+[ext_resource type="PackedScene" uid="uid://uuksu5g2js0s" path="res://game/player.tscn" id="1_qah0c"]
+[ext_resource type="Script" path="res://level scenes/dungeons_1.gd" id="1_ry2cg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_srff2"]
+size = Vector2(235, 19)
 
 [node name="Dungeons_1" type="Node2D"]
+script = ExtResource("1_ry2cg")
+
+[node name="player" parent="." instance=ExtResource("1_qah0c")]
+position = Vector2(160, 107)
+
+[node name="platform" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform"]
+position = Vector2(161, 143)
+shape = SubResource("RectangleShape2D_srff2")
+
+[node name="ColorRect" type="ColorRect" parent="platform/CollisionShape2D"]
+offset_left = -118.0
+offset_top = -9.0
+offset_right = 118.0
+offset_bottom = 11.0
