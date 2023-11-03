@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://drn3jlv5d4wp1"]
+
+[ext_resource type="Texture2D" uid="uid://brbefe78k31rh" path="res://assets/game sprites/push_block.png" id="1_hwvg7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y511h"]
+size = Vector2(32, 32)
+
+[node name="pushblock" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 7
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hwvg7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_y511h")
