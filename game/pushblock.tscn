@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://drn3jlv5d4wp1"]
+[gd_scene load_steps=4 format=3 uid="uid://drn3jlv5d4wp1"]
 
 [ext_resource type="Texture2D" uid="uid://brbefe78k31rh" path="res://assets/game sprites/push_block.png" id="1_hwvg7"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_up10k"]
+friction = 0.5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y511h"]
 size = Vector2(32, 32)
@@ -8,6 +11,11 @@ size = Vector2(32, 32)
 [node name="pushblock" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 7
+<<<<<<< Updated upstream
+physics_material_override = SubResource("PhysicsMaterial_up10k")
+=======
+mass = 3.0
+>>>>>>> Stashed changes
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_hwvg7")
