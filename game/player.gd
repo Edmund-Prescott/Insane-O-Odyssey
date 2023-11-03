@@ -29,15 +29,9 @@ func _physics_process(delta):
 		var c = get_slide_collision(i)
 		var collider = c.get_collider()
 		
-		# Check if the collider is a RigidBody2D
 		if collider is RigidBody2D:
-			# Apply impulse only along the direction of motion (to prevent rolling)
 			var impulse = -c.get_normal() * PUSH_FORCE
 			collider.apply_central_impulse(impulse)
-			
-			# Disable rotation by setting the moment of inertia to a large value
-			collider.inertia = 1e6
-
 	
 	move_and_slide()
 

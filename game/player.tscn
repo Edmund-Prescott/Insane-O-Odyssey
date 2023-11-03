@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bb51jsmh4yhtk" path="res://assets/game sprites/insa_no99_v1.png" id="2_2it5b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6h60k"]
-size = Vector2(20, 18)
+size = Vector2(20, 28)
 
 [node name="player" type="CharacterBody2D"]
 collision_layer = 4
@@ -16,7 +16,7 @@ JUMP_VELOCITY = -300.0
 texture = ExtResource("2_2it5b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 7)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_6h60k")
 
 [node name="Camera2D" type="Camera2D" parent="."]

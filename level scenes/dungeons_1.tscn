@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://uuksu5g2js0s" path="res://game/player.tscn" id="1_qah0c"]
 [ext_resource type="Script" path="res://level scenes/dungeons_1.gd" id="1_ry2cg"]
-[ext_resource type="PackedScene" uid="uid://drn3jlv5d4wp1" path="res://game/pushblock.tscn" id="3_5qkbw"]
+[ext_resource type="PackedScene" uid="uid://cfm5bl72yjopb" path="res://game/pushblock.tscn" id="3_kfjdm"]
 
 [node name="Dungeons_1" type="Node2D"]
 script = ExtResource("1_ry2cg")
@@ -10,12 +10,18 @@ script = ExtResource("1_ry2cg")
 [node name="player" parent="." instance=ExtResource("1_qah0c")]
 position = Vector2(128, 136)
 
-[node name="pushblock" parent="." instance=ExtResource("3_5qkbw")]
-position = Vector2(192, 136)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(0, -16, 0, 168, 320, 168, 320, -16, 304, -16, 304, 152, 16, 152, 16, -16)
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
+
+[node name="pushblock" parent="." instance=ExtResource("3_kfjdm")]
+position = Vector2(224, 136)
+
+[node name="pushblock2" parent="." instance=ExtResource("3_kfjdm")]
+position = Vector2(86, 136)
+
+[node name="pushblock3" parent="." instance=ExtResource("3_kfjdm")]
+position = Vector2(224, 104)
