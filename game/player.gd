@@ -5,6 +5,8 @@ extends CharacterBody2D
 @export var SPEED = 150.0
 @export var JUMP_VELOCITY = -200.0
 @export var ACCELERATION = 600.0
+@export var AIR_ACCELERATION = 500.0
+@export var AIR_RESISTENCE = 200.0
 @export var FRICTION = 1000.0
 @export var PUSH_FORCE = 60.0
 
@@ -21,6 +23,8 @@ func _physics_process(delta):
 	direction = Input.get_vector("Left", "Right", "ui_up", "ui_down")
 
 	handle_acceleration(input_axis, delta)
+	handle_air_acceleration(input_axis, delta)
+	handle_air_resistence(input_axis, delta)
 	apply_friction(input_axis, delta)
 	facing_direction()
 	
@@ -39,6 +43,15 @@ func handle_acceleration(input_axis, delta):
 	if !is_on_floor(): return
 	if input_axis:
 		velocity.x = move_toward(velocity.x, SPEED * input_axis, ACCELERATION * delta)
+
+func handle_air_acceleration(input_axis, delta):
+	if is_on_floor(): return
+	if input_axis != 0:
+		velocity.x = move_toward(velocity.x, SPEED * input_axis, AIR_ACCELERATION * delta)
+
+func handle_air_resistence(input_axis, delta):
+	if input_axis == 0 and not is_on_floor():
+		velocity.x = move_toward(velocity.x, 0, AIR_RESISTENCE * delta)
 
 func apply_friction(input_axis, delta):
 	if input_axis == 0 and is_on_floor():

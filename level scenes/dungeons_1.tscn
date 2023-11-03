@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3wrenrwl2wte"]
+[gd_scene load_steps=7 format=3 uid="uid://b3wrenrwl2wte"]
 
 [ext_resource type="PackedScene" uid="uid://uuksu5g2js0s" path="res://game/player.tscn" id="1_qah0c"]
 [ext_resource type="Script" path="res://level scenes/dungeons_1.gd" id="1_ry2cg"]
 [ext_resource type="PackedScene" uid="uid://cfm5bl72yjopb" path="res://game/pushblock.tscn" id="3_kfjdm"]
+[ext_resource type="PackedScene" uid="uid://bnfx2ch7vtfxp" path="res://game/floorbutton.tscn" id="4_ge3r1"]
+[ext_resource type="PackedScene" uid="uid://cmn5376i4enrj" path="res://game/platform.tscn" id="5_pkf7y"]
+[ext_resource type="PackedScene" uid="uid://dtjc7mbsw3mf3" path="res://game/door.tscn" id="6_40eva"]
 
 [node name="Dungeons_1" type="Node2D"]
 script = ExtResource("1_ry2cg")
@@ -11,17 +14,33 @@ script = ExtResource("1_ry2cg")
 position = Vector2(128, 136)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+z_index = 1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(0, -16, 0, 168, 320, 168, 320, -16, 304, -16, 304, 152, 16, 152, 16, -16)
+polygon = PackedVector2Array(-80, 0, -64, 0, -64, 144, -64, 152, 208, 152, 208, 200, 272, 200, 272, 152, 416, 152, 416, 104, 336, 104, 328, 104, 328, 0, 344, 0, 344, 88, 432, 88, 432, 168, 288, 168, 288, 216, 192, 216, 192, 168, -80, 168)
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
 
 [node name="pushblock" parent="." instance=ExtResource("3_kfjdm")]
-position = Vector2(224, 136)
+position = Vector2(240, 128)
 
 [node name="pushblock2" parent="." instance=ExtResource("3_kfjdm")]
 position = Vector2(86, 136)
 
+[node name="pushblock4" parent="." instance=ExtResource("3_kfjdm")]
+position = Vector2(-16, 104)
+
+[node name="pushblock5" parent="." instance=ExtResource("3_kfjdm")]
+position = Vector2(-16, 136)
+
 [node name="pushblock3" parent="." instance=ExtResource("3_kfjdm")]
-position = Vector2(224, 104)
+position = Vector2(240, 96)
+
+[node name="floorbutton" parent="." instance=ExtResource("4_ge3r1")]
+position = Vector2(176, 152)
+
+[node name="platform" parent="." instance=ExtResource("5_pkf7y")]
+position = Vector2(120, 48)
+
+[node name="door" parent="." instance=ExtResource("6_40eva")]
+position = Vector2(344, 128)
