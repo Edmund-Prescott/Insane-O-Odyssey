@@ -1,29 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3wrenrwl2wte"]
+[gd_scene load_steps=4 format=3 uid="uid://b3wrenrwl2wte"]
 
 [ext_resource type="PackedScene" uid="uid://uuksu5g2js0s" path="res://game/player.tscn" id="1_qah0c"]
 [ext_resource type="Script" path="res://level scenes/dungeons_1.gd" id="1_ry2cg"]
 [ext_resource type="PackedScene" uid="uid://bwthkoia5k4kh" path="res://game/push_block.tscn" id="3_r678e"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_srff2"]
-size = Vector2(235, 19)
-
 [node name="Dungeons_1" type="Node2D"]
 script = ExtResource("1_ry2cg")
 
 [node name="player" parent="." instance=ExtResource("1_qah0c")]
-position = Vector2(160, 107)
+position = Vector2(128, 136)
 
-[node name="platform" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="platform"]
-position = Vector2(161, 143)
-shape = SubResource("RectangleShape2D_srff2")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(0, -16, 0, 168, 320, 168, 320, -16, 304, -16, 304, 152, 16, 152, 16, -16)
 
-[node name="ColorRect" type="ColorRect" parent="platform/CollisionShape2D"]
-offset_left = -118.0
-offset_top = -9.0
-offset_right = 118.0
-offset_bottom = 11.0
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
 
 [node name="push_block" parent="." instance=ExtResource("3_r678e")]
-position = Vector2(210, 36)
+position = Vector2(216, 136)

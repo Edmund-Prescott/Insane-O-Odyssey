@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwthkoia5k4kh"]
+[gd_scene load_steps=3 format=3 uid="uid://bwthkoia5k4kh"]
 
 [ext_resource type="Texture2D" uid="uid://brbefe78k31rh" path="res://assets/game sprites/push_block.png" id="1_0imc5"]
-[ext_resource type="Script" path="res://game/push_block.gd" id="1_o4xi6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_exi8c"]
 size = Vector2(32, 32)
@@ -9,7 +8,6 @@ size = Vector2(32, 32)
 [node name="push_block" type="RigidBody2D"]
 collision_layer = 0
 collision_mask = 3
-script = ExtResource("1_o4xi6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_0imc5")
