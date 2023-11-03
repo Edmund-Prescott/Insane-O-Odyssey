@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var JUMP_VELOCITY = -200.0
 @export var ACCELERATION = 600.0
 @export var FRICTION = 1000.0
+@export var PUSH_FORCE = 80.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -22,6 +23,12 @@ func _physics_process(delta):
 	handle_acceleration(input_axis, delta)
 	apply_friction(input_axis, delta)
 	facing_direction()
+	
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody2D:
+			c.get_collider().apply_central_impulse(-c.get_normal() * PUSH_FORCE)
+	
 	move_and_slide()
 
 func handle_acceleration(input_axis, delta):
