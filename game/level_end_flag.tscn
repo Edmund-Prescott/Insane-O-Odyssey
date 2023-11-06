@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlp7agym0umaq"]
+
+[ext_resource type="Texture2D" uid="uid://8o3ykw66uh5k" path="res://assets/game sprites/level_end_flag.png" id="1_ehyuf"]
+[ext_resource type="Script" path="res://game/level_end_flag.gd" id="1_ex8oi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0s85h"]
+size = Vector2(8, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ncpjn"]
+size = Vector2(18, 32)
+
+[node name="LevelEndFlag" type="Area2D"]
+collision_mask = 0
+script = ExtResource("1_ex8oi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ehyuf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_0s85h")
+disabled = true
+
+[node name="LevelEndTrigger" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEndTrigger"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_ncpjn")
+
+[connection signal="body_entered" from="LevelEndTrigger" to="." method="_on_level_end_trigger_body_entered"]

@@ -1,15 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3wrenrwl2wte"]
+[gd_scene load_steps=10 format=3 uid="uid://b3wrenrwl2wte"]
 
 [ext_resource type="PackedScene" uid="uid://uuksu5g2js0s" path="res://game/player.tscn" id="1_qah0c"]
 [ext_resource type="Script" path="res://level scenes/dungeons_1.gd" id="1_ry2cg"]
+[ext_resource type="PackedScene" uid="uid://ccaxvskjenhet" path="res://level scenes/world_2.tscn" id="2_dqo3h"]
 [ext_resource type="PackedScene" uid="uid://cfm5bl72yjopb" path="res://game/pushblock.tscn" id="3_kfjdm"]
 [ext_resource type="PackedScene" uid="uid://bnfx2ch7vtfxp" path="res://game/floorbutton.tscn" id="4_ge3r1"]
 [ext_resource type="PackedScene" uid="uid://cmn5376i4enrj" path="res://game/platform.tscn" id="5_pkf7y"]
 [ext_resource type="PackedScene" uid="uid://dtjc7mbsw3mf3" path="res://game/door.tscn" id="6_40eva"]
 [ext_resource type="PackedScene" uid="uid://c4w1wg1gkdcic" path="res://game/spike_hazard.tscn" id="7_5nxpl"]
+[ext_resource type="PackedScene" uid="uid://dlp7agym0umaq" path="res://game/level_end_flag.tscn" id="8_yxmlt"]
 
 [node name="Dungeons_1" type="Node2D"]
 script = ExtResource("1_ry2cg")
+next_level = ExtResource("2_dqo3h")
 
 [node name="player" parent="." instance=ExtResource("1_qah0c")]
 position = Vector2(128, 136)
@@ -51,3 +54,6 @@ position = Vector2(224, 184)
 
 [node name="spike_hazard2" parent="." instance=ExtResource("7_5nxpl")]
 position = Vector2(256, 184)
+
+[node name="LevelEndFlag" parent="." instance=ExtResource("8_yxmlt")]
+position = Vector2(384, 136)

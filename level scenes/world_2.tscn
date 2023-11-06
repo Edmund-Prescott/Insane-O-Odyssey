@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://ccaxvskjenhet"]
+
+[ext_resource type="Script" path="res://world_2.gd" id="1_ovg6n"]
+[ext_resource type="PackedScene" uid="uid://bnfx2ch7vtfxp" path="res://game/floorbutton.tscn" id="3_qd7l2"]
+[ext_resource type="PackedScene" uid="uid://cfm5bl72yjopb" path="res://game/pushblock.tscn" id="4_7ditn"]
+[ext_resource type="PackedScene" uid="uid://dtjc7mbsw3mf3" path="res://game/door.tscn" id="5_bbkpd"]
+[ext_resource type="PackedScene" uid="uid://uuksu5g2js0s" path="res://game/player.tscn" id="6_tx5qc"]
+[ext_resource type="PackedScene" uid="uid://dlp7agym0umaq" path="res://game/level_end_flag.tscn" id="7_0yd0g"]
+
+[node name="world_2" type="Node2D"]
+script = ExtResource("1_ovg6n")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+z_index = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(0, 0, 0, 176, 384, 176, 384, 96, 256, 96, 256, 0, 240, 0, 240, 104, 240, 112, 368, 112, 368, 160, 16, 160, 16, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
+
+[node name="floorbutton" parent="." instance=ExtResource("3_qd7l2")]
+position = Vector2(48, 160)
+
+[node name="pushblock" parent="." instance=ExtResource("4_7ditn")]
+position = Vector2(96, 144)
+
+[node name="door" parent="." instance=ExtResource("5_bbkpd")]
+position = Vector2(256, 160)
+
+[node name="player" parent="." instance=ExtResource("6_tx5qc")]
+position = Vector2(160, 144)
+
+[node name="LevelEndFlag" parent="." instance=ExtResource("7_0yd0g")]
+position = Vector2(320, 144)
