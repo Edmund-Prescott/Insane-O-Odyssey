@@ -1,6 +1,7 @@
 extends StaticBody2D
 
 @onready var animation_player = $AnimationPlayer
+
 var is_pushed = false
 
 func _ready():
@@ -18,6 +19,7 @@ func buttonpressed():
 	if is_pushed != true:
 		animation_player.play("pushed")
 		await animation_player.animation_finished
+		Events.door_open.emit()
 		is_pushed = true
 	
 
@@ -25,4 +27,5 @@ func _on_detector_body_exited(body):
 	if is_pushed != false:
 		animation_player.play("unpress")
 		await animation_player.animation_finished
+		Events.door_close.emit()
 		is_pushed = false

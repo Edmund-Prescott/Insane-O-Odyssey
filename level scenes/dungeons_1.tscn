@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3wrenrwl2wte"]
+[gd_scene load_steps=8 format=3 uid="uid://b3wrenrwl2wte"]
 
 [ext_resource type="PackedScene" uid="uid://uuksu5g2js0s" path="res://game/player.tscn" id="1_qah0c"]
 [ext_resource type="Script" path="res://level scenes/dungeons_1.gd" id="1_ry2cg"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bnfx2ch7vtfxp" path="res://game/floorbutton.tscn" id="4_ge3r1"]
 [ext_resource type="PackedScene" uid="uid://cmn5376i4enrj" path="res://game/platform.tscn" id="5_pkf7y"]
 [ext_resource type="PackedScene" uid="uid://dtjc7mbsw3mf3" path="res://game/door.tscn" id="6_40eva"]
+[ext_resource type="PackedScene" uid="uid://c4w1wg1gkdcic" path="res://game/spike_hazard.tscn" id="7_5nxpl"]
 
 [node name="Dungeons_1" type="Node2D"]
 script = ExtResource("1_ry2cg")
@@ -43,4 +44,10 @@ position = Vector2(176, 152)
 position = Vector2(120, 48)
 
 [node name="door" parent="." instance=ExtResource("6_40eva")]
-position = Vector2(344, 128)
+position = Vector2(344, 152)
+
+[node name="spike_hazard" parent="." instance=ExtResource("7_5nxpl")]
+position = Vector2(224, 184)
+
+[node name="spike_hazard2" parent="." instance=ExtResource("7_5nxpl")]
+position = Vector2(256, 184)

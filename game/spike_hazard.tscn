@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4w1wg1gkdcic"]
+
+[ext_resource type="Texture2D" uid="uid://3rekge08cphk" path="res://assets/game sprites/spike_hazard.png" id="1_j1su2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jn21q"]
+size = Vector2(32, 20)
+
+[node name="spike_hazard" type="Area2D"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_j1su2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_jn21q")
