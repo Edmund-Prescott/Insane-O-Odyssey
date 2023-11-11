@@ -17,7 +17,7 @@ var direction : Vector2 = Vector2.ZERO
 
 func _physics_process(delta):
 	apply_gravity(delta)
-	handle_jump()
+	#handle_jump()
 	
 	var input_axis = Input.get_axis("Left", "Right")
 	direction = Input.get_vector("Left", "Right", "ui_up", "ui_down")

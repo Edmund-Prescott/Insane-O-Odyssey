@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://brbefe78k31rh" path="res://assets/game sprites/push_block.png" id="1_47sam"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g5w0u"]
-friction = 0.25
+friction = 0.3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gnyub"]
 size = Vector2(32, 32)

@@ -1,14 +1,97 @@
-[gd_scene load_steps=10 format=3 uid="uid://b3wrenrwl2wte"]
+[gd_scene load_steps=19 format=3 uid="uid://b3wrenrwl2wte"]
 
 [ext_resource type="PackedScene" uid="uid://uuksu5g2js0s" path="res://game/player.tscn" id="1_qah0c"]
 [ext_resource type="Script" path="res://level scenes/dungeons_1.gd" id="1_ry2cg"]
 [ext_resource type="PackedScene" uid="uid://ccaxvskjenhet" path="res://level scenes/world_2.tscn" id="2_dqo3h"]
 [ext_resource type="PackedScene" uid="uid://cfm5bl72yjopb" path="res://game/pushblock.tscn" id="3_kfjdm"]
 [ext_resource type="PackedScene" uid="uid://bnfx2ch7vtfxp" path="res://game/floorbutton.tscn" id="4_ge3r1"]
-[ext_resource type="PackedScene" uid="uid://cmn5376i4enrj" path="res://game/platform.tscn" id="5_pkf7y"]
 [ext_resource type="PackedScene" uid="uid://dtjc7mbsw3mf3" path="res://game/door.tscn" id="6_40eva"]
 [ext_resource type="PackedScene" uid="uid://c4w1wg1gkdcic" path="res://game/spike_hazard.tscn" id="7_5nxpl"]
+[ext_resource type="Script" path="res://game/platform.gd" id="7_tfe1y"]
+[ext_resource type="Texture2D" uid="uid://d12lcwqpp7h4n" path="res://assets/game sprites/platform.png" id="7_ysfgk"]
 [ext_resource type="PackedScene" uid="uid://dlp7agym0umaq" path="res://game/level_end_flag.tscn" id="8_yxmlt"]
+[ext_resource type="Script" path="res://level scenes/platformtwo.gd" id="11_rixs7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4yaed"]
+size = Vector2(60, 13)
+
+[sub_resource type="Animation" id="Animation_42daq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(120, 100)]
+}
+
+[sub_resource type="Animation" id="Animation_mgmhg"]
+resource_name = "platform_movement"
+length = 6.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 3, 4, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(120, 100), Vector2(120, 100), Vector2(120, 0), Vector2(120, 0), Vector2(120, 100)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x5812"]
+_data = {
+"RESET": SubResource("Animation_42daq"),
+"platform_movement": SubResource("Animation_mgmhg")
+}
+
+[sub_resource type="Animation" id="Animation_a6lrf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(32, 50)]
+}
+
+[sub_resource type="Animation" id="Animation_7lk7k"]
+resource_name = "platform_movement"
+length = 6.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 3, 4, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(32, 50), Vector2(32, 50), Vector2(32, 0), Vector2(32, 0), Vector2(32, 50)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t5llb"]
+_data = {
+"RESET": SubResource("Animation_a6lrf"),
+"platform_movement": SubResource("Animation_7lk7k")
+}
 
 [node name="Dungeons_1" type="Node2D"]
 script = ExtResource("1_ry2cg")
@@ -42,9 +125,23 @@ position = Vector2(240, 96)
 
 [node name="floorbutton" parent="." instance=ExtResource("4_ge3r1")]
 position = Vector2(176, 152)
+collision_layer = 0
 
-[node name="platform" parent="." instance=ExtResource("5_pkf7y")]
-position = Vector2(120, 48)
+[node name="platform" type="StaticBody2D" parent="."]
+position = Vector2(120, 100)
+script = ExtResource("7_tfe1y")
+
+[node name="Sprite2D" type="Sprite2D" parent="platform"]
+texture = ExtResource("7_ysfgk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform"]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_4yaed")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platform"]
+libraries = {
+"": SubResource("AnimationLibrary_x5812")
+}
 
 [node name="door" parent="." instance=ExtResource("6_40eva")]
 position = Vector2(344, 152)
@@ -57,3 +154,19 @@ position = Vector2(256, 184)
 
 [node name="LevelEndFlag" parent="." instance=ExtResource("8_yxmlt")]
 position = Vector2(384, 136)
+
+[node name="platformtwo" type="StaticBody2D" parent="."]
+position = Vector2(32, 50)
+script = ExtResource("11_rixs7")
+
+[node name="Sprite2D" type="Sprite2D" parent="platformtwo"]
+texture = ExtResource("7_ysfgk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platformtwo"]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_4yaed")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platformtwo"]
+libraries = {
+"": SubResource("AnimationLibrary_t5llb")
+}

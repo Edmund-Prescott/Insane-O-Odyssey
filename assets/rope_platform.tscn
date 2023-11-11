@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd71ax2kt6rnk"]
+
+[ext_resource type="Texture2D" uid="uid://dumjnqlmdtadg" path="res://assets/game sprites/rope_platform.png" id="1_5yn2e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prx5c"]
+size = Vector2(16, 5)
+
+[node name="rope_platform" type="StaticBody2D"]
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5yn2e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_prx5c")
+one_way_collision = true

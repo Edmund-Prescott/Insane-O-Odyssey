@@ -10,10 +10,8 @@ size = Vector2(20, 28)
 collision_layer = 12
 collision_mask = 3
 floor_max_angle = 1.0472
-floor_snap_length = 3.0
 script = ExtResource("1_px0sb")
 JUMP_VELOCITY = -300.0
-PUSH_FORCE = 40.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_2it5b")
